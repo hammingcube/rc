@@ -6,9 +6,10 @@
 		<main-app></main-app>
 		<script src="bower_components/riot/riot.min.js"></script>
 		<script src="tags/riot_tags.js"></script>
+		<script src="app.js"></script>
 
 		<script>
-			riot.mount('*')
+			riot.mount('*', {fetchAttempts: fetchAttempts})
 		</script>
 	</body>
 </html>
