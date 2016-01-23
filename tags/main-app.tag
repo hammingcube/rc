@@ -1,4 +1,4 @@
 <main-app>
 	<h1>Main Application</h1>
-	<attempts></attempts>
+	<attempts fetch_attempts={opts.fetch_attempts}></attempts>
 </main-app>

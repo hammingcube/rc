@@ -17,7 +17,19 @@ riot.tag2('attempts', '<ul> <li each="{attempt_data in attempts_data}"> <attempt
 				result: {status: "Success"}
 			}]
 			console.log(this.attempts_data)
+			this.on('mount', function() {
+				this.fetchAttempts = (this.opts.fetch_attempts ||
+				function(){
+					console.log("Default fetch attempt")
+				})
+				this.fetchAttempts(this)
+			})
+			this.on('data_loaded', function(data) {
+				console.log("Data loaded: ", data)
+				this.attempts_data = data.attempts
+				this.update()
+			})
 }, '{ }');
 
-riot.tag2('main-app', '<h1>Main Application</h1> <attempts></attempts>', '', '', function(opts) {
-});
+riot.tag2('main-app', '<h1>Main Application</h1> <attempts fetch_attempts="{opts.fetch_attempts}"></attempts>', '', '', function(opts) {
+}, '{ }');
